@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -28,27 +28,27 @@
                                 <div class="card-body p-md-5 mx-md-4">
                                     <div class="text-center">
                                     <h2 class="mb-3">
-                                        <span
+                                        <span 
                                             style="font-family: 'Playfair Display'; color: #8e181f; font-weight: bold;"> <ins>KOPI HITADO</ins>
                                         </span>
                                     </h2>
-
+ 
                                     </div>
 
-                                    <form method="POST" action="{{ route('login') }}"
-                                    style="font-family: 'DM Sans'; font-weight:bold"
-                                    action="" method="post">
-                                    @csrf
+                                    <form
+                                        style="font-family: 'DM Sans'; font-weight:bold"
+                                        action="" method="post">
+                                        @csrf
                                         <h3 class="pt-5 text-center">Login </h3>
                                         @if (session('status'))
                                             <div class="alert alert-danger p-1 ms-3 text-center" role="alert">
                                             </div>
                                         @endif
-                                        <label class="form-label" for="form2Example11">email</label>
+                                        <label class="form-label" for="form2Example11">Username</label>
 
                                         <div class="form-outline mb-4">
-                                            <input type="email" name="email" id="email" class="form-control"
-                                                placeholder="email" />
+                                            <input type="username" name="username" id="username" class="form-control"
+                                                placeholder="Username" />
                                         </div>
 
                                         <div class="form-outline mb-4">

@@ -1,0 +1,1 @@
+@extends('Kasir.layout.main')
