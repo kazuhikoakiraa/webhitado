@@ -25,9 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-//route kasir
+    //route kasir
 
 Route::get('/kasir-dashboard', function(){
     return view('Kasir.kasir-dashboard');
@@ -44,25 +43,6 @@ Route::get('/kasir-kelolapesanan', function(){
 Route::get('/kasir-kelolamenu', function(){
     return view('Kasir.kasir-kelolamenu');
 });
-//route pelanggan
-Route::get('/pelanggan', function () {
-return view('Pelanggan.view.tentang');
-});
-
-Route::get('/pelanggan-tentang', function(){
-    return view('Pelanggan.view.tentang');
-});
-Route::get('/pelanggan-menu', function(){
-    return view('Pelanggan.view.menu');
-});
-Route::get('/pelanggan-keranjang', function(){
-    return view('Pelanggan.view.keranjang');
-});
-
-Route::get('/pelanggan-detail', function(){
-    return view('Pelanggan.view.detail');
-});
-
 
 //route admin
 
@@ -93,6 +73,29 @@ Route::get('/admin-kelolpesanan', function(){
 Route::get('/admin-stock', function(){
     return view('Admin.admin-sisainventori');
 });
+
+});
+
+//route pelanggan
+Route::get('/pelanggan', function () {
+    return view('Pelanggan.view.tentang');
+    });
+
+    Route::get('/pelanggan-tentang', function(){
+        return view('Pelanggan.view.tentang');
+    });
+    Route::get('/pelanggan-menu', function(){
+        return view('Pelanggan.view.menu');
+    });
+    Route::get('/pelanggan-keranjang', function(){
+        return view('Pelanggan.view.keranjang');
+    });
+
+    Route::get('/pelanggan-detail', function(){
+        return view('Pelanggan.view.detail');
+    });
+
+
 
 //route controller
 Route::resource('homepage',HomepageController::class);
