@@ -1,3 +1,4 @@
+<!-- Your partial Laravel file -->
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-1 position-fixed" style="background-color: #EFE9D3;">
     <!-- Brand Logo -->
@@ -29,7 +30,7 @@
             </a>
           </li>
 
-          <li class="nav-item ">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
@@ -40,19 +41,17 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin-kelolamenu" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Kelola Menu</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin-kelolapesanan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>kelola Pesanan</p>
+                  <p>Kelola Pesanan</p>
                 </a>
               </li>
-
             </ul>
           </li>
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
@@ -64,19 +63,16 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin-inventorimasuk" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Inventori Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin-inventorikeluar" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Inventori Keluar</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin-stock" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Stok Barang</p>
                 </a>
               </li>
@@ -100,3 +96,17 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
+  <!-- Your JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Menggunakan event delegation untuk menangani klik pada ikon fa-angle-down-right
+      document.querySelectorAll('.nav-item.has-treeview > a').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Toggle class 'menu-open' pada elemen parent saat ikon fa-angle-down-right ditekan
+          item.parentNode.classList.toggle('menu-open');
+        });
+      });
+    });
+  </script>

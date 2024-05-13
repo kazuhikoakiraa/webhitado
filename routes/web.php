@@ -66,7 +66,7 @@ Route::get('/admin-kelolamenu', function(){
     return view('Admin.admin-kelolamenu');
 });
 
-Route::get('/admin-kelolpesanan', function(){
+Route::get('/admin-kelolapesanan', function(){
     return view('Admin.admin-kelolapesanan');
 });
 

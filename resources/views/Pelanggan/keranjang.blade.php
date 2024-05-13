@@ -22,8 +22,7 @@
     <!-- Pemesanan start -->
     <section class="pesanan" style="background-color: #f8f9fa; display: flex; justify-content: center; align-items: center; padding-top: 50px; text-align: center;">
         <form class="order" action="" method="POST" style="background-color: #efe9d3; padding: auto; margin: 50px; border-radius: 10px; justify-content: center;">
-            @csrf
-            <h2 style="text-align: center; margin-top: 30px; font-size: 2.3rem; font-family:'Playfair Display';"> Pesanan</h2>
+            @csrf3            <h2 style="text-align: center; margin-top: 30px; font-size: 2.3rem; font-family:'Playfair Display';"> Pesanan</h2>
             <div style=" background-color: #f8f9fa; margin: 30px; display: flex;  width: 180px; border-radius:10px; justify-content:center;">
                 <div class="place" style="text-align: left; margin: 10px;">
                     <label for="place" class="mr-3"> Nomor Meja </label>
@@ -43,9 +42,9 @@
                         <input type="number" name="qty" class="input-responsive" value="1" required style="width: 50px; padding: 5px; border: 1px solid #c6c5c5; border-radius: 5px;">
                 </div>
             </fieldset>
-            
+
             <div class="checkout" style="margin-top: 20px; margin-bottom: 20px;">
-                <button type="submit" style="border: 1px solid #8e181f; padding: 10px 200px; background-color: transparent; color: #8e181f; cursor: pointer; transition: all 0.3s ease;">CHECKOUT</button>
+                <button  style="border: 1px solid #8e181f; padding: 10px 200px; background-color: transparent; color: #8e181f; cursor: pointer; transition: all 0.3s ease;">CHECKOUT</button>
             </div>
         </form>
     </section>
