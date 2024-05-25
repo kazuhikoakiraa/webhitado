@@ -22,7 +22,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/admin-tentangkami" class="nav-link">
+            <a href="{{route('admin.homepage.index')}}" class="nav-link">
               <i class="nav-icon fa fa-search"></i>
               <p>
                 Tentang Kami
@@ -40,12 +40,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin-kelolamenu" class="nav-link">
+                <a href="{{route('admin.product.index')}}" class="nav-link">
                   <p>Kelola Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin-kelolapesanan" class="nav-link">
+                <a href="{{route('admin.order.index')}}" class="nav-link">
                   <p>Kelola Pesanan</p>
                 </a>
               </li>
@@ -62,17 +62,17 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin-inventorimasuk" class="nav-link">
+                <a href="{{route('admin.incoming.index')}}" class="nav-link">
                   <p>Inventori Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin-inventorikeluar" class="nav-link">
+                <a href="{{route('admin.outgoing.index')}}" class="nav-link">
                   <p>Inventori Keluar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin-stock" class="nav-link">
+                <a href="{{route('admin.item.index')}}" class="nav-link">
                   <p>Stok Barang</p>
                 </a>
               </li>

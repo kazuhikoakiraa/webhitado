@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
 class OrderproductController extends Controller
@@ -11,7 +12,7 @@ class OrderproductController extends Controller
      */
     public function index()
     {
-        //
+        $orderproduct = OrderProduct::all();
     }
 
     /**

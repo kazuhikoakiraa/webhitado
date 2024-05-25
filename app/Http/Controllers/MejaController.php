@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\meja;
 
 class MejaController extends Controller
 {
@@ -11,7 +12,8 @@ class MejaController extends Controller
      */
     public function index()
     {
-        //
+        $meja = meja::all();
+        return view();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,7 +12,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order = Order::all();
+        return view("Admin.admin-kelolapesanan",compact('order'));
     }
 
     /**
@@ -59,6 +61,8 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Order::findOrFail($id)->delete();
+
+        return back()->with('alert', 'Berhasil Hapus Data Incoming!');
     }
 }

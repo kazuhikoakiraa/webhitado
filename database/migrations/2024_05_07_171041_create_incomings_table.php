@@ -15,10 +15,11 @@ return new class extends Migration
         Schema::create('incomings', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignIdFor(item::class)->cascadeOnDelete();
+            $table->string('kategori');
+            $table->integer('harga');
             $table->string('nama');
             $table->integer('stock');
-            $table->integer('count');
-            $table->date('tanggal_masuk');
+            $table->string('satuan');
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Homepage;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -11,7 +12,9 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        return 'ini halaman homepage';
+        $homepage = Homepage::all();
+        // dd($homepage);
+        return view('Admin.admin-tentang', compact('homepage'));
     }
 
     /**

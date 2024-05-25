@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredients;
 use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
@@ -11,7 +12,7 @@ class IngredientsController extends Controller
      */
     public function index()
     {
-        //
+        $ingredient = Ingredients::all();
     }
 
     /**

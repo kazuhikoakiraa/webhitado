@@ -13,7 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call(HomepageSeeder::class);
+        $this->call(IncomingSeeder::class);
+        $this->call(IngredientsSeeder::class);
+        $this->call(ItemSeeder::class);
+        $this->call(MejaSeeder::class);
+        $this->call(OrderProdcutSeeder::class);
+        $this->call(OrderSeeder::class);
+        $this->call(OutgoingSeeder::class);
+        $this->call(ProductSeeder::class);
 
         User::factory()->create([
             'name' => 'Test User',

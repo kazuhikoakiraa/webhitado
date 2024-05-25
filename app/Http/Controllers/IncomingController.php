@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Incoming;
 
 class IncomingController extends Controller
 {
@@ -11,15 +12,10 @@ class IncomingController extends Controller
      */
     public function index()
     {
-        return 'ini halaman incoming';
-    }
+        $bar = Incoming::where('kategori', 'Minuman')->get();
+        $dapur = Incoming::where('kategori', 'Makanan')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('Admin.admin-inventorimasuk', compact('dapur','bar'));
     }
 
     /**
@@ -27,23 +23,29 @@ class IncomingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+            'item_id' => 'required|numeric',
+            'kategori' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'harga' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'satuan' => 'required|string|max:255',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        ]);
+
+        $data = Incoming::create([
+            'item_id' => $request->item_id,
+            'kategori' => $request->kategori,
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'stock' => $request->stock,
+            'satuan' => $request->satuan,
+        ]);
+
+        // dd($data);
+
+        return back()->with('alert', 'Berhasil Tambah Data!');
     }
 
     /**
@@ -51,14 +53,37 @@ class IncomingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Incoming::findOrFail($id);
+
+        $request->validate([
+            'kategori' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'harga' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'satuan' => 'required|string|max:255',
+            
+        ]);
+
+        $data->update([
+            'kategori' => $request->kategori,
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'stock' => $request->stock,
+            'satuan' => $request->satuan,
+        ]);
+
+        // dd($data);
+
+        return back()->with('alert', 'Berhasil Edit Data!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Incoming::findOrFail($id)->delete();
+
+        return back()->with('alert', 'Berhasil Hapus Data!');
     }
 }

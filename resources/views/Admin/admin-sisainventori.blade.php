@@ -32,16 +32,17 @@
                         <tr>
                             <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff; border-radius: 15px 0px 0px 0px;">ID Barang</th>
                             <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Nama Barang</th>
-                            <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Harga Barang</th>
                             <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Jumlah Barang</th>
                         </tr>
                         <!-- Sample data for Kitchen -->
+                        @foreach ($dapur as $dapur)
+
                         <tr>
-                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">B0384</td>
-                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Beras</td>
-                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Rp 65.000</td>
-                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">5 Kg</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$loop->iteration}}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$dapur->nama}}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$dapur->stock}}  {{$dapur->satuan}}</td>
                         </tr>
+                        @endforeach
                     </table>
                 </div>
                 <!-- Table for Bar -->
@@ -50,16 +51,17 @@
                     <tr>
                         <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff; border-radius: 15px 0px 0px 0px;">ID Barang</th>
                         <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Nama Barang</th>
-                        <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Harga Barang</th>
                         <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Jumlah Barang</th>
                     </tr>
                     <!-- Sample data for Bar -->
+                    @foreach ($bar as $bar)
+
                     <tr>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">B0384</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">Beras</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">Rp 65.000</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">5 Kg</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$loop->iteration}}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$bar->nama}}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$bar->stock}}  {{$bar->satuan}}</td>
                     </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

@@ -34,26 +34,44 @@
                         <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff;">Status</th>
                         <th style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #ffffff; border-radius: 0px 15px 0px 0px;">Aksi</th>
                     </tr>
-                    <tr id="pesanan1">
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">JKX485</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">7</td>
-                        <td id="statuspesanan1" style="padding: 10px; border-bottom: 1px solid #ddd;">Menunggu Pembayaran</td>
+                    @foreach ($order as $item)
+
+                    <tr >
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$item->no_antrian}}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$item->meja_id}}</td>
+                        <td id="statuspesanan1" style="padding: 10px; border-bottom: 1px solid #ddd;">{{$item->status}}</td>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;">
                             <button onclick="konfirmasi('pesanan1')" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer;">Konfirmasi</button>
-                            <button onclick="hapus('pesanan1')" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;">Hapus</button>
+                            <button style="background-color: #8E181F; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;" class="delete-button" data-bs-toggle="modal"
+                            data-bs-target=".bd-example-modal-sm{{ $item->id }}">Hapus</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-sm{{ $item->id }}" tabindex="-1" role="dialog" aria-hidden="">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">{{ __('Hapus Data') }}
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Apakah anda yakin ingin menghapus data?</div>
+                                    <div class="modal-footer">
+                                        <form action="{{ route('admin.order.destroy', $item->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ __('Tidak') }}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
                             <button onclick="print()" style="background-color: #8E181F; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;">Print</button>
                         </td>
                     </tr>
-                    <tr id="pesanan2">
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">KJD782</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">5</td>
-                        <td id="statuspesanan2" style="padding: 10px; border-bottom: 1px solid #ddd;">Menunggu Pembayaran</td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">
-                            <button onclick="konfirmasi('pesanan2')" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer;">Konfirmasi</button>
-                            <button onclick="hapus('pesanan2')" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;">Hapus</button>
-                            <button onclick="print()" style="background-color: #8E181F; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;">Print</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

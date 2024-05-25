@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outgoing;
 use Illuminate\Http\Request;
 
 class OutgoingController extends Controller
@@ -11,7 +12,9 @@ class OutgoingController extends Controller
      */
     public function index()
     {
-        //
+        $outgoing = Outgoing::all();
+        $outgoing2 = Outgoing::all();
+        return view("Admin.admin-inventorikeluar",compact('outgoing','outgoing2'));
     }
 
     /**

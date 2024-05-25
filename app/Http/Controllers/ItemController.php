@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -11,7 +12,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $dapur = Item::all();
+        $bar = Item::all();
+
+        return view('Admin.admin-sisainventori', compact('dapur','bar'));
     }
 
     /**

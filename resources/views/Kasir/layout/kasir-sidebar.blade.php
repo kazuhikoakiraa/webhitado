@@ -1,3 +1,4 @@
+<!-- Your partial Laravel file -->
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar elevation-1 position-fixed" style="background-color: #EFE9D3;">
     <!-- Brand Logo -->
@@ -12,7 +13,7 @@
 
         <!-- componenn menu sidebar -->
           <li class="nav-item">
-            <a href="dashboard" class="nav-link">
+            <a href="/kasir-dashboard" class="nav-link">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Dashboard
@@ -29,7 +30,7 @@
             </a>
           </li>
 
-          <li class="nav-item ">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
@@ -39,32 +40,46 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="/kasir-kelolamenu" class="nav-link">
                   <p>Kelola Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>kelola Pesanan</p>
+                <a href="/kasir-kelolapesanan" class="nav-link">
+                  <p>Kelola Pesanan</p>
                 </a>
               </li>
-
             </ul>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="#login" class="nav-link">
+            <form method="POST" action="{{route('logout')}}">
+            @csrf
+            <a href="{{route('logout')}}" class="nav-link"onclick="event.preventDefault(); this.closest('form').submit();">
               <i class="nav-icon fa fa-power-off"></i>
               <p>
                 Log Out
               </p>
             </a>
-          </li>
+            </form>
+        </li>
 
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+
+  <!-- Your JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Menggunakan event delegation untuk menangani klik pada ikon fa-angle-down-right
+      document.querySelectorAll('.nav-item.has-treeview > a').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Toggle class 'menu-open' pada elemen parent saat ikon fa-angle-down-right ditekan
+          item.parentNode.classList.toggle('menu-open');
+        });
+      });
+    });
+  </script>
