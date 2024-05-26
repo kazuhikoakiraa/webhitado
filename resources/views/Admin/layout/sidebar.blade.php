@@ -1,6 +1,34 @@
-<!-- Your partial Laravel file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <style>
+        #main-sidebar {
+          width: 270px;
+          height: 100%;
+          background-color: #f4f4f4;
+          overflow-y: auto;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+          transition: width 0.3s ease;
+          position: fixed;
+          top: 0;
+          left: 0;
+          transform: translateX(0); /* Mengatur sidebar terbuka awalnya */
+        }
+
+        #main-sidebar.sidebar-closed {
+          width: 0; /* Menutup sidebar saat sidebar-closed */
+          transform: translateX(-270px); /* Menggeser sidebar ke kiri */
+        }
+
+    </style>
+</head>
+<body>
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar elevation-1 position-fixed" style="background-color: #EFE9D3;">
+<aside id="main-sidebar" class="main-sidebar elevation-1 position-fixed" style="background-color: #EFE9D3;">
     <!-- Brand Logo -->
     <a>
       <img src="{{ asset('img/logo.png') }}" alt="HITADO LOGO" style="width: 100px; height: 100px; border-radius: 50%;">
@@ -100,13 +128,20 @@
   <!-- Your JavaScript -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Menggunakan event delegation untuk menangani klik pada ikon fa-angle-down-right
       document.querySelectorAll('.nav-item.has-treeview > a').forEach(function(item) {
         item.addEventListener('click', function(e) {
           e.preventDefault();
-          // Toggle class 'menu-open' pada elemen parent saat ikon fa-angle-down-right ditekan
           item.parentNode.classList.toggle('menu-open');
         });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Menggunakan event listener untuk menangani klik pada ikon hamburger di navbar
+      document.getElementById('main-navbar-toggler').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Toggle class 'sidebar-closed' pada elemen sidebar saat tombol hamburger ditekan
+        document.getElementById('main-sidebar').classList.toggle('sidebar-closed');
       });
     });
   </script>
