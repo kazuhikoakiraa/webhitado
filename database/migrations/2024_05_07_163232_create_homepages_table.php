@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homepages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('section');
             $table->string('description');
             $table->string('img');
         });

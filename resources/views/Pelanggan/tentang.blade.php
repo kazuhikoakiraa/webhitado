@@ -17,21 +17,24 @@
         <!-- partial navbar -->
         @include('Pelanggan.layout.pelanggan-navbar')
         <!-- end partial navbar -->
-    
+
     <!-- Main Content -->
         <!-- Profile Section -->
+        @foreach ($tentang1 as $item)
+
         <section class="profile" style="display: flex; min-height: 100vh; background-position: center; align-items: center; background-repeat: no-repeat;">
             <div class="content" style="padding: 1.4rem 7%; width: 100%;">
                 <h1 style="font-size: 3rem; font-family: 'Playfair Display'; color: #8e181f; font-weight:bold; ">WE ARE NOW <br />WE ARE LATER</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia,Lorem ipsum dolor sit amet, consectetur</p>
+                <p>{{$item->description}}</p>
             </div>
             <div class="profile-img" style="flex: 1 1 45rem; cursor: pointer;">
                 <div class="button-position" style="display: row; text-align:center;">
-                    <img src="{{ asset('img/logo.png') }}" alt="Profile" style="cursor: pointer;">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer;" width="400">
                     <input type="file" id="profile-image" style="display: none;">
                 </div>
             </div>
         </section>
+        @endforeach
 
         <!-- About Section -->
         <section class="about" style="display: flex; min-height: 100vh; background-position: center;background-color: #efe9d3; align-items: center; background-repeat: no-repeat;">
@@ -63,7 +66,7 @@
                     </a>
                 </div>
                 <div class="product-card" style="margin: 0px 0px 0px 5rem; background-color: #f9f9f9; width: 15rem; border-radius:10px; padding:30px 30px 10px 30px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
-                    <a href="{{ route('pelanggan-menu') }}" style="color: #000000;">    
+                    <a href="{{ route('pelanggan-menu') }}" style="color: #000000;">
                         <img src="{{ asset('img/minuman.jpeg') }}" alt="Product 1" style="width: 100%; height: 12rem; border-radius:10px; margin-bottom:20px;">
                         <h3>DRINK</h3>
                         <div class="product-price" style="margin-bottom: 25px; font-size:25px;">Explore More <i class="fas fa-angle-right"></i></div>
@@ -96,7 +99,7 @@
         <!-- partial footbar -->
         @include('Pelanggan.layout.pelanggan-footbar')
         <!-- end partial footbar -->
- 
+
     <script>
         feather.replace();
     </script>

@@ -15,22 +15,21 @@ class HomepageSeeder extends Seeder
     {
         $Homepage = [
             [
+               
+                'section' =>'profile',
                 'description' => 'ini contoh aja',
                 'img' => 'test.png'
 
             ],
             [
 
+                'section' =>'about',
                 'description' => 'ini contoh aja',
                 'img' => 'test.png'
             ],
             [
 
-                'description' => 'ini contoh aja',
-                'img' => 'test.png'
-            ],
-            [
-
+                'section' =>'explore',
                 'description' => 'ini contoh aja',
                 'img' => 'test.png'
             ],

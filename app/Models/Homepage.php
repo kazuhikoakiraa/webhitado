@@ -9,6 +9,6 @@ class Homepage extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['description','img'];
+    protected $fillable = ['section','description','img'];
     protected $table = 'homepages';
 }

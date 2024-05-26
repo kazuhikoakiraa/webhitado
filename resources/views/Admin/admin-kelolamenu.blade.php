@@ -50,20 +50,54 @@
                                         <option value="Minuman">Minuman</option>
                                     </select><br>
 
-                                    <label for="img">Gambar:</label><br>
-                                    <input type="file" id="img" name="img" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc;"><br>
+                                    <label class="form-label">{{ __('Images') }}</label>
+                                    <input id="image-input" accept="image/*" type="file"
+                                        class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
+                                        value="{{ old('img') }}">
+                                    <img class="img-fluid py-3" id="image-preview" width="200px"
+                                        src="{{ asset('assets/img/default.png') }}" alt="Image Preview">
+                                    @error('img')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <br>
 
                                     <label for="id_product">ID Menu:</label><br>
-                                    <input type="text" id="id_product" name="id_product" placeholder="Masukkan ID Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                    <input type="text" id="id_product" name="id_product" placeholder="Masukkan ID Menu"
+                                        style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
 
                                     <label for="nama">Nama Menu:</label><br>
-                                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Menu"
+                                        style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
 
                                     <label for="harga">Harga:</label><br>
-                                    <input type="number" id="harga" name="harga" placeholder="Masukkan Harga Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                    <input type="number" id="harga" name="harga" placeholder="Masukkan Harga Menu"
+                                        style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
 
-                                    <button onclick="simpanAdd()" type="submit" class="btn btn-primary">Tambah</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                                    </div>
                                 </form>
+
+                                <script>
+                                    document.getElementById('image-input').addEventListener('change', function(event) {
+                                        const file = event.target.files[0];
+                                        const preview = document.getElementById('image-preview');
+
+                                        if (file) {
+                                            const reader = new FileReader();
+
+                                            reader.onload = function(e) {
+                                                preview.src = e.target.result;
+                                            }
+
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            preview.src = "{{ asset('assets/img/default.png') }}";
+                                        }
+                                    });
+                                </script>
+
                             </div>
                         </div>
                     </div>
@@ -86,7 +120,84 @@
                             <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$product->nama}}</td>
                             <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$product->harga}}</td>
                             <td style="padding: 10px; border-bottom: 1px solid #ddd;">
-                                <button onclick="openEdit()" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer; ">Edit</button>
+                                <button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
+                            data-bs-target=".formEdit{{ $product->id }}" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer;">Edit</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade formEdit{{ $product->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form method="POST" action="{{ route('admin.product.update', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}</h5>
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label>Pilihan Kategori:</label><br>
+                                                    <select name="kategori" id="kategori" style="border: 1px solid #ccc; border-radius: 5px; padding:10px; width: 100%;">
+                                                        <option value="{{$product->kategori}}" selected>{{$product->kategori}}</option>
+                                                        <option value="Makanan">Makanan</option>
+                                                        <option value="Minuman">Minuman</option>
+                                                        <!-- Tambahkan opsi kategori lainnya jika ada -->
+                                                    </select><br>
+                                                    <label for="id_product">ID Menu:</label><br>
+                                                    <input value="{{$product->id_product}}" type="text" id="id_product" name="id_product" placeholder="Masukkan ID Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label for="nama">Nama Menu:</label><br>
+                                                    <input value="{{$product->nama}}" type="text" id="nama" name="nama" placeholder="Masukkan Nama Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label for="harga">Harga Menu:</label><br>
+                                                    <input value="{{$product->harga}}" type="number" id="harga" name="harga" placeholder="Masukkan Harga Menu"  style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label class="form-label">{{ __('Images') }}</label><br>
+                                                    @if ($product->img == null)
+                                                        <img class="img-fluid rounded" width="200px" id="image-preview{{ $product->id }}"
+                                                            src="{{ asset('assets/img/test.png') }}" >
+                                                    @else
+                                                        <img class="img-fluid rounded" width="200px" id="image-preview{{ $product->id }}"
+                                                            src="{{ asset('assets/img/' . $product->img) }}" >
+                                                    @endif
+                                                    @error('images')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                    <input type="file" accept="image/*" id="image-input{{ $product->id }}"
+                                                        class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img">
+                                                    @error('img')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+<script>
+    document.getElementById('image-input{{ $product->id }}').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('image-preview{{ $product->id }}');
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "{{ $product->img ? asset('assets/img/' . $product->img) : asset('assets/img/test.png') }}";
+        }
+    });
+</script>
+
+
                                 <button style="background-color: #8E181F; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;" class="delete-button" data-bs-toggle="modal"
                                 data-bs-target=".bd-example-modal-sm{{ $product->id }}">Hapus</button>
 
@@ -138,7 +249,82 @@
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$product->nama}}</td>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;">{{$product->harga}}</td>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;">
-                            <button onclick="openEdit()" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer; ">Edit</button>
+                            <button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
+                            data-bs-target=".formEdit{{ $product->id }}" style="background-color: #8B4233; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 5px; cursor: pointer;">Edit</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade formEdit{{ $product->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form method="POST" action="{{ route('admin.product.update', $product->id) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}</h5>
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label>Pilihan Kategori:</label><br>
+                                                    <select name="kategori" id="kategori" style="border: 1px solid #ccc; border-radius: 5px; padding:10px; width: 100%;">
+                                                        <option value="{{$product->kategori}}" selected>{{$product->kategori}}</option>
+                                                        <option value="Makanan">Makanan</option>
+                                                        <option value="Minuman">Minuman</option>
+                                                        <!-- Tambahkan opsi kategori lainnya jika ada -->
+                                                    </select><br>
+                                                    <label for="id_product">ID Menu:</label><br>
+                                                    <input value="{{$product->id_product}}" type="text" id="id_product" name="id_product" placeholder="Masukkan ID Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label for="nama">Nama Menu:</label><br>
+                                                    <input value="{{$product->nama}}" type="text" id="nama" name="nama" placeholder="Masukkan Nama Menu" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label for="harga">Harga Menu:</label><br>
+                                                    <input value="{{$product->harga}}" type="number" id="harga" name="harga" placeholder="Masukkan Harga Menu"  style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
+                                                    <label class="form-label">{{ __('Images') }}</label><br>
+                                                    @if ($product->img == null)
+                                                        <img class="img-fluid rounded" width="200px" id="image-preview{{ $product->id }}"
+                                                            src="{{ asset('assets/img/test.png') }}" >
+                                                    @else
+                                                        <img class="img-fluid rounded" width="200px" id="image-preview{{ $product->id }}"
+                                                            src="{{ asset('assets/img/' . $product->img) }}" >
+                                                    @endif
+                                                    @error('images')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                    <input type="file" accept="image/*" id="image-input{{ $product->id }}"
+                                                        class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img">
+                                                    @error('img')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+<script>
+    document.getElementById('image-input{{ $product->id }}').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('image-preview{{ $product->id }}');
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "{{ $product->img ? asset('assets/img/' . $product->img) : asset('assets/img/test.png') }}";
+        }
+    });
+</script>
                             <button style="background-color: #8E181F; color: white; padding: 5px 10px; font-size:10px; border: none; border-radius: 3px; cursor: pointer;" class="delete-button" data-bs-toggle="modal"
                             data-bs-target=".bd-example-modal-sm{{ $product->id }}">Hapus</button>
 
@@ -169,71 +355,6 @@
                     </tr>
                     @endforeach
                 </table>
-
-                <!-- Modal Edit -->
-                <div id="editModal" class="modal" style="display: none; position: fixed; margin-left:150px; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
-                    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 60%;">
-                        <!-- Modal content -->
-                        <span onclick="closeEdit()" style="color: #aaa; float: right; font-size: 28px; font-weight: bold;">&times;</span>
-                        <h2 style="margin-bottom: 20px;">Edit Menu</h2>
-                        <form action="">
-                        <label>Kategori:</label><br>
-                        <input type="text" id="menu_id" name="menu_id" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; background-color:#ccc; margin-bottom: 10px;"><br>
-                        <label for="menu_image">Gambar:</label><br>
-                        <input type="file" id="menu_image" name="menu_image" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
-                        <label for="menu_name">ID Menu:</label><br>
-                        <input type="text" id="menu_id" name="menu_id" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; background-color:#ccc; margin-bottom: 10px;"><br>
-                        <label for="menu_name">Nama Menu:</label><br>
-                        <input type="text" id="menu_name" name="menu_name" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
-                        <label for="menu_price">Harga:</label><br>
-                        <input type="text" id="menu_price" name="menu_price" style="padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 10px;"><br>
-                        <label for="menu_price">Komposisi:</label><br>
-                        <!-- Input komposisi disini -->
-                            <div class="komposisi" id="" name="komposisi" style="display:flex; padding: 10px; border-radius: 5px; width: 50%; border: 1px solid #ccc; margin-bottom: 10px;" >
-                                <input type="text" placeholder="ID Bahan" style="border: 0;  margin-right:5px; width: 85%;">
-                                <input type="text" placeholder="Quantitiy" style="border: 0; margin-right:5px; width: 85%;">
-                                <select name="quantity" id="quantity" style="float: right; border: 0;">
-                                <option value="gram">gr</option>
-                                <option value="mililiter">ml</option>
-                                </select> <br>
-                            </div>
-                            <div class="komposisi" id="" name="komposisi" style="display:flex; padding: 10px; border-radius: 5px; width: 50%; border: 1px solid #ccc; margin-bottom: 10px;" >
-                                <input type="text" placeholder="ID Bahan" style="border: 0;  margin-right:5px; width: 85%;">
-                                <input type="text" placeholder="Quantitiy" style="border: 0; margin-right:5px; width: 85%;">
-                                <select name="quantity" id="quantity" style="float: right; border: 0;">
-                                <option value="gram">gr</option>
-                                <option value="mililiter">ml</option>
-                                </select> <br>
-                            </div>
-                            <div class="komposisi" id="" name="komposisi" style="display:flex; padding: 10px; border-radius: 5px; width: 50%; border: 1px solid #ccc; margin-bottom: 10px;" >
-                                <input type="text" placeholder="ID Bahan" style="border: 0;  margin-right:5px; width: 85%;">
-                                <input type="text" placeholder="Quantitiy" style="border: 0; margin-right:5px; width: 85%;">
-                                <select name="quantity" id="quantity" style="float: right; border: 0;">
-                                <option value="gram">gr</option>
-                                <option value="mililiter">ml</option>
-                                </select> <br>
-                            </div>
-                            <div class="komposisi" id="" name="komposisi" style="display:flex; padding: 10px; border-radius: 5px; width: 50%; border: 1px solid #ccc; margin-bottom: 10px;" >
-                                <input type="text" placeholder="ID Bahan" style="border: 0;  margin-right:5px; width: 85%;">
-                                <input type="text" placeholder="Quantitiy" style="border: 0; margin-right:5px; width: 85%;">
-                                <select name="quantity" id="quantity" style="float: right; border: 0;">
-                                <option value="gram">gr</option>
-                                <option value="mililiter">ml</option>
-                                </select> <br>
-                            </div>
-                            <div class="komposisi" id="" name="komposisi" style="display:flex; padding: 10px; border-radius: 5px; width: 50%; border: 1px solid #ccc; margin-bottom: 10px;" >
-                                <input type="text" placeholder="ID Bahan" style="border: 0;  margin-right:5px; width: 85%;">
-                                <input type="text" placeholder="Quantitiy" style="border: 0; margin-right:5px; width: 85%;">
-                                <select name="quantity" id="quantity" style="float: right; border: 0;">
-                                <option value="gram">gr</option>
-                                <option value="mililiter">ml</option>
-                                </select> <br>
-                            </div>
-                            <button type="submit" style="background-color: #8B4233; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Simpan</button>
-                        </form>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>

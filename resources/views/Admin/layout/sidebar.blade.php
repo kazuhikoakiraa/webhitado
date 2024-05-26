@@ -13,7 +13,7 @@
 
         <!-- componenn menu sidebar -->
           <li class="nav-item">
-            <a href="/admin-dashboard" class="nav-link">
+            <a href="{{route('dashboard')}}" class="nav-link">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Dashboard

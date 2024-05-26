@@ -12,17 +12,10 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $homepage = Homepage::all();
-        // dd($homepage);
-        return view('Admin.admin-tentang', compact('homepage'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $tentang1 = Homepage::where('section','profile')->get();
+        $tentang2 = Homepage::where('section','about')->get();
+        $tentang3 = Homepage::where('section','explore')->get();
+        return view('Admin.admin-tentang', compact('tentang1','tentang2','tentang3'));
     }
 
     /**
@@ -30,15 +23,23 @@ class HomepageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        ]);
+
+        $homepage = Homepage::create([
+            'description' => $request->description,
+        ]);
+
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $file_name = $homepage->img . '_' . time() . '.' . $img->getClientOriginalExtension();
+            $homepage->img = $file_name;
+            $homepage->update();
+            $img->move('../public/assets/img/', $file_name);
+        }
+        
+        return back()->with('alert', 'Berhasil Tambah Data!');
     }
 
     /**
@@ -54,7 +55,24 @@ class HomepageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $homepage = Homepage::findOrFail($id);
+
+        $request->validate([
+
+        ]);
+
+        $homepage->update([
+            'description' => $request->description,
+        ]);
+
+        if ($request->hasFile('img')) {
+            $img = $request->file('img');
+            $file_name = $homepage->img . '_' . time() . '.' . $img->getClientOriginalExtension();
+            $homepage->img = $file_name;
+            $homepage->update();
+            $img->move('../public/assets/img/', $file_name);
+        }
+        return back()->with('alert', 'Berhasil Edit Data!');
     }
 
     /**

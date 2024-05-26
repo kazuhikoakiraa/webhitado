@@ -28,14 +28,24 @@ class ProductController extends Controller
         public function store(Request $request)
         {
             $validatedata = $request->validate([
-                'kategori' => 'required|string|max:255',
-                'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  // Image validation
-                'id_product' => 'required|numeric',
-                'nama' => 'required|string|max:255',
-                'harga' => 'required|numeric|min:0',
             ]);
 
-           Product::create($validatedata);
+            $product = Product::create([
+                'kategori' => $request->kategori,
+                'id_product' => $request->id_product,
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+
+            ]);
+
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                $file_name = $product->img . '_' . time() . '.' . $img->getClientOriginalExtension();
+                $product->img = $file_name;
+                $product->update();
+                $img->move('../public/assets/img/', $file_name);
+            }
+
             return back()->with('alert','Berhasil Menambahkan Data!');
 
         }
@@ -45,6 +55,29 @@ class ProductController extends Controller
         public function update(Request $request, $id)
         {
 
+            $product = Product::findOrFail($id);
+
+            $validatedata = $request->validate([
+
+            ]);
+
+            $product ->update([
+                'kategori' => $request->kategori,
+                'id_product' => $request->id_product,
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+
+            ]);
+
+            if ($request->hasFile('img')) {
+                $img = $request->file('img');
+                $file_name = $product->img . '_' . time() . '.' . $img->getClientOriginalExtension();
+                $product->img = $file_name;
+                $product->update();
+                $img->move('../public/assets/img/', $file_name);
+            }
+
+            return back()->with('alert','Berhasil Mengedit Data!');
         }
 
         // Menghapus menu berdasarkan ID
