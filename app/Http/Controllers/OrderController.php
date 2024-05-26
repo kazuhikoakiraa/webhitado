@@ -63,6 +63,6 @@ class OrderController extends Controller
     {
         Order::findOrFail($id)->delete();
 
-        return back()->with('alert', 'Berhasil Hapus Data Incoming!');
+        return back()->with('alert', '!');
     }
 }

@@ -29,7 +29,7 @@
             </div>
             <div class="profile-img" style="flex: 1 1 45rem; cursor: pointer;">
                 <div class="button-position" style="display: row; text-align:center;">
-                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer;" width="400">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer; width: 400px; height: auto; border-radius: 15px;">
                     <input type="file" id="profile-image" style="display: none;">
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <section class="about" style="display: flex; min-height: 100vh; background-position: center;background-color: #efe9d3; align-items: center; background-repeat: no-repeat;">
             <div class="about-img" style="flex: 1 1 45rem;">
                 <div class="button-position" style="display: row; text-align:center; ">
-                    <img src="{{ asset('assets/img/' . $item->img) }}" alt="ABOUT">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer; width: 400px; height: auto; border-radius: 15px;">
                     <input type="file" id="about-image" style="display: none;">
                 </div>
             </div>

@@ -24,28 +24,34 @@ class IncomingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'item_id' => 'required|numeric',
             'kategori' => 'required|string|max:255',
             'nama' => 'required|string|max:255',
             'harga' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'satuan' => 'required|string|max:255',
-
         ]);
 
-        $data = Incoming::create([
-            'item_id' => $request->item_id,
-            'kategori' => $request->kategori,
-            'nama' => $request->nama,
-            'harga' => $request->harga,
-            'stock' => $request->stock,
-            'satuan' => $request->satuan,
-        ]);
+        // Cek apakah item dengan nama yang sama sudah ada dalam database
+        $existingItem = Incoming::where('nama', $request->nama)->first();
 
-        // dd($data);
-
-        return back()->with('alert', 'Berhasil Tambah Data!');
+        if ($existingItem) {
+            // Jika item sudah ada, tambahkan jumlah stock dengan stock baru
+            $existingItem->stock += $request->stock;
+            $existingItem->save();
+            return back()->with('alert', 'Berhasil Update Data!');
+        } else {
+            // Jika item belum ada, buat data baru
+            $data = Incoming::create([
+                'item_id' => $request->item_id,
+                'kategori' => $request->kategori,
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+                'stock' => $request->stock,
+                'satuan' => $request->satuan,
+            ]);
+            return back()->with('alert', 'Berhasil Tambah Data!');
+        }
     }
 
     /**
@@ -61,7 +67,7 @@ class IncomingController extends Controller
             'harga' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'satuan' => 'required|string|max:255',
-            
+
         ]);
 
         $data->update([

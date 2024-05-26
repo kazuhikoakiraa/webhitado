@@ -7,7 +7,7 @@
    <div class="navbar-nav" style="display: inline-block; align-items: center; margin-right:3rem">
    <a href="/pelanggan" style="color: #000000; font-size: 1rem; font-weight: bold; font-family: 'Playfair Display'; margin-right: 2rem;">Tentang Kami</a>
    <a href="/pelanggan-menu" style="color: #000000; font-size: 1rem; font-weight: bold; font-family: 'Playfair Display'; margin-right: 2rem;">Menu</a>
-   <a href="/pelanggan-keranjang" style="color: #000000; font-size: 1rem; font-weight: bold; font-family: 'Playfair Display';"><i data-feather="shopping-cart" style="color:#8e181f; height:20px; margin-bottom:5px;"></i> Keranjang</a>
+   <a href="{{route('cart.view')}}" style="color: #000000; font-size: 1rem; font-weight: bold; font-family: 'Playfair Display';"><i data-feather="shopping-cart" style="color:#8e181f; height:20px; margin-bottom:5px;"></i> Keranjang</a>
 
    </div>
 </nav>

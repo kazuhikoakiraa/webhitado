@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Incoming;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -12,8 +13,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $dapur = Item::all();
-        $bar = Item::all();
+        $bar = Incoming::where('kategori', 'Minuman')->get();
+        $dapur = Incoming::where('kategori', 'Makanan')->get();
 
         return view('Admin.admin-sisainventori', compact('dapur','bar'));
     }

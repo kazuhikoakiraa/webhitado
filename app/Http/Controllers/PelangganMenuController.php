@@ -14,4 +14,13 @@ class PelangganMenuController extends Controller
 
         return view('Pelanggan.menu', compact('makanan', 'minuman'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $minuman = Product::where('kategori', 'minuman')->where('nama', 'LIKE', "%{$query}%")->get();
+        $makanan = Product::where('kategori', 'makanan')->where('nama', 'LIKE', "%{$query}%")->get();
+
+        return view('Pelanggan.menu', compact('minuman', 'makanan'));
+    }
 }

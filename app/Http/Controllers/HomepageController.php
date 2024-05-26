@@ -29,7 +29,7 @@ class HomepageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
+           
         ]);
 
         $homepage = Homepage::create([
