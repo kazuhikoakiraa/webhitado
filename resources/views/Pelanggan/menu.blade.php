@@ -40,104 +40,41 @@
         </div>
     </section>
 
-    <!-- Minuman start -->
-    <section class="minuman" id="toggle-drink" style="background-color: #efe9d3;">
-        <h2 style="font-size: 4rem; margin-left: 4rem; font-family: 'Playfair Display'; color: #8e181f;">Minuman</h2>
-        <div class="row">
-            <div class="container" style="display: flex; flex-wrap:wrap; justify-content:center;">
-                <!-- Menu-card 1 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
+        <!-- Minuman start -->
+        <section class="minuman" id="toggle-drink" style="background-color: #efe9d3;">
+            <h2 style="font-size: 4rem; margin-left: 4rem; font-family: 'Playfair Display'; color: #8e181f;">Minuman</h2>
+            <div class="row">
+                <div class="container" style="display: flex; flex-wrap:wrap; justify-content:center;">
+                    <!-- Menu-card 1 -->
+                    @foreach ($minuman as $item)
+
+                    <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
+                        <img src="{{ asset('assets/img/' . $item->img) }}" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 25%; margin: 30px; border-radius:15px;">
+                        <h3 class="menu-card-title" style="margin:auto;">{{$item->nama}}</h3>
+                        <p class="menu-card-price" style="margin:auto;">Rp. {{$item->harga}}</p>
+                        <div class="addcart" style="margin-top: 10px;">
+                            <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
+                                <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
+                                <span>Tambahkan ke Keranjang</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <!-- Menu-card 2 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 3 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="container" style="display: flex; flex-wrap:wrap; justify-content:center;">
-
-                <!-- Menu-card 1 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 2 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 3 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/minuman.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Kopi Susu</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 30.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Minuman End -->
+            <!-- Minuman End -->
 
 <!-- Makanan start -->
 <section class="makanan" id="toggle-food" style="background-color: #ffffff;">
-        <h2 style="font-size: 4rem; margin-left: 4rem; font-family: 'Playfair Display'; color: #8e181f;">Minuman</h2>
+        <h2 style="font-size: 4rem; margin-left: 4rem; font-family: 'Playfair Display'; color: #8e181f;">Makanan</h2>
         <div class="row">
             <div class="container" style="display: flex; flex-wrap:wrap; justify-content:center;">
                 <!-- Menu-card 1 -->
+                @foreach ($makanan as $item)
                 <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
+                    <img src="{{ asset('assets/img/' . $item->img) }}" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 25%; margin: 30px; border-radius:15px;">
+                    <h3 class="menu-card-title" style="margin:auto;">{{$item->nama}}</h3>
+                    <p class="menu-card-price" style="margin:auto;">Rp. {{$item->harga}}</p>
                     <div class="addcart" style="margin-top: 10px;">
                         <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
                             <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
@@ -145,75 +82,9 @@
                         </button>
                     </div>
                 </div>
-                <!-- Menu-card 2 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 3 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-
-        <div class="row">
-            <div class="container" style="display: flex; flex-wrap:wrap; justify-content:center;">
-
-                <!-- Menu-card 1 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 2 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Menu-card 3 -->
-                <div class="menu-card" style="text-align: center; padding-bottom: 4rem;">
-                    <img src="../img/makanan.jpeg" alt="Espresso" class="menu-card-img" style="border: 10px solid #ffffff; width: 75%; margin: 30px; border-radius:15px;">
-                    <h3 class="menu-card-title" style="margin:auto;">Nasi Goreng</h3>
-                    <p class="menu-card-price" style="margin:auto;">Rp. 40.000</p>
-                    <div class="addcart" style="margin-top: 10px;">
-                        <button style="background-color: transparent; border: 1px solid #8e181f; color: #8e181f; padding: 5px 10px; font-size: 12px; display: inline-flex; align-items: center; cursor: pointer;">
-                            <i data-feather="shopping-cart" style="height: 15px; margin-bottom:3px;"></i>
-                            <span>Tambahkan ke Keranjang</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Minuman End -->
 
     <!-- partial footbar -->

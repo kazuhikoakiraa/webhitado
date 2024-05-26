@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('homepages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('section');
-            $table->string('description');
+            $table->text('description');
             $table->string('img');
         });
     }

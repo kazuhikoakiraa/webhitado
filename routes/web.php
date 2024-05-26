@@ -9,6 +9,8 @@ use App\Http\Controllers\MejaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderproductController;
 use App\Http\Controllers\OutgoingController;
+use App\Http\Controllers\PelangganMenuController;
+use App\Http\Controllers\PelangganTentangController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\http\Middleware\Admin;
@@ -21,16 +23,9 @@ Route::get('/', function(){
 });
 
     //route pelanggan
-    Route::get('/pelanggan', function () {
-    return view('Pelanggan.view.tentang');
-    });
-
-    Route::get('/pelanggan-tentang', function(){
-        return view('Pelanggan.view.tentang');
-    });
-    Route::get('/pelanggan-menu', function(){
-        return view('Pelanggan.view.menu');
-    });
+    Route::get('/pelanggan',[PelangganTentangController::class, 'index'])->name('pelanggan.tentang');
+    Route::get('/pelanggan-menu', [PelangganMenuController::class, 'index'])->name('pelanggan.menu');
+    
     Route::get('/pelanggan-keranjang', function(){
         return view('Pelanggan.view.keranjang');
     });
@@ -80,5 +75,8 @@ Route::get('/', function(){
             Route::resource('product',ProductController::class);
 
         });
+
+
+
 
     });

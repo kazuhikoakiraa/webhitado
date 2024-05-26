@@ -37,36 +37,41 @@
         @endforeach
 
         <!-- About Section -->
+        @foreach ($tentang2 as $item)
+
         <section class="about" style="display: flex; min-height: 100vh; background-position: center;background-color: #efe9d3; align-items: center; background-repeat: no-repeat;">
             <div class="about-img" style="flex: 1 1 45rem;">
                 <div class="button-position" style="display: row; text-align:center; ">
-                    <img src="{{ asset('img/logo.png') }}" alt="ABOUT">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" alt="ABOUT">
                     <input type="file" id="about-image" style="display: none;">
                 </div>
             </div>
             <div class="content" style="padding: 1.4rem 7%; width: 100%;">
                 <h1 style="font-size: 3rem; font-family: 'Playfair Display'; color: #8e181f; font-weight:bold;">ABOUT OUR CAFE</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia,Lorem ipsum dolor sit amet, consectetur</p>
+                <p>{{$item->description}}</p>
             </div>
         </section>
+        @endforeach
 
         <!-- Explore Section -->
+        @foreach ($tentang3 as $item)
+
         <section class="explore" style="text-align: center; background-color: #ffffff; font-size: 2rem; min-height: 90vh; font-family: 'Playfair Display'; color: #8e181f;">
             <div class="content">
-            <h1 style="color: #8e181f; margin-top: 5rem; margin-bottom: 3rem; font-weight:bold;">EXPLORE OUR CAFE</h1>
-            <p style="color: #000000; font-size: 15px; margin-bottom: 3rem; margin-left:8rem; margin-right:8rem;">Discover our wide selection of high-quality coffee beans from around the world.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis elit et mi lobortis, sed varius tortor aliquam. Maecenas ac quam lacinia,Lorem ipsum dolor sit amet, consectetur</p>
+                <h1 style="color: #8e181f; margin-top: 5rem; margin-bottom: 3rem; font-weight:bold;">EXPLORE OUR CAFE</h1>
+                <p style="color: #000000; font-size: 15px; margin-bottom: 3rem; margin-left:8rem; margin-right:8rem;">{{$item->description}}</p>
             </div>
             <input type="file" id="explore-image" style="display: none;">
             <div class="row" style="display: flex; justify-content: center;">
                 <div class="product-card" style="margin: 0px 5rem 0px 0px; background-color: #f9f9f9; width: 15rem; border-radius:10px; padding:30px 30px 10px 30px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
-                    <a href="{{ route('pelanggan-menu') }}" style="color: #000000;">
+                    <a href="" style="color: #000000;">
                         <img src="{{ asset('img/makanan.jpeg') }}" alt="Product 1" style="width: 100%; height: 12rem; border-radius:10px; margin-bottom:20px;">
                         <h3>FOOD</h3>
                         <div class="product-price" style="margin-bottom: 15px; font-size:25px;">Explore More <i class="fas fa-angle-right"></i></div>
                     </a>
                 </div>
                 <div class="product-card" style="margin: 0px 0px 0px 5rem; background-color: #f9f9f9; width: 15rem; border-radius:10px; padding:30px 30px 10px 30px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
-                    <a href="{{ route('pelanggan-menu') }}" style="color: #000000;">
+                    <a href="" style="color: #000000;">
                         <img src="{{ asset('img/minuman.jpeg') }}" alt="Product 1" style="width: 100%; height: 12rem; border-radius:10px; margin-bottom:20px;">
                         <h3>DRINK</h3>
                         <div class="product-price" style="margin-bottom: 25px; font-size:25px;">Explore More <i class="fas fa-angle-right"></i></div>
@@ -74,6 +79,7 @@
                 </div>
             </div>
         </section>
+        @endforeach
 
 
         <!-- Visit Section -->

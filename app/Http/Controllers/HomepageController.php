@@ -18,6 +18,11 @@ class HomepageController extends Controller
         return view('Admin.admin-tentang', compact('tentang1','tentang2','tentang3'));
     }
 
+    public function getSectionData($section)
+    {
+        return Homepage::where('section', $section)->get();
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -38,7 +43,7 @@ class HomepageController extends Controller
             $homepage->update();
             $img->move('../public/assets/img/', $file_name);
         }
-        
+
         return back()->with('alert', 'Berhasil Tambah Data!');
     }
 
