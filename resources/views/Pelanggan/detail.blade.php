@@ -36,7 +36,7 @@
         <br><br><br>
         <p>SILAHKAN TERLEBIH DAHULU MEMBAYAR KE KASIR!</p>
         <br><br>
-        <a href="/pelanggan-status">
+        <a href="{{route('order.status')}}">
             <div style="display: flex; justify-content: center;">
                 <button class="box-button" style="border: 1px solid #8e181f; padding: 10px 200px; background-color: transparent; color: #8e181f; cursor: pointer; transition: all 0.3s ease; border-radius: 5px; width: fit-content;">Cek Status Pesanan</button>
             </div>

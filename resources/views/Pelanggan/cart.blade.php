@@ -120,7 +120,7 @@
                         <option value="{{ $i }}">Meja {{ $i }}</option>
                     @endfor
                 </select>
-                <button type="submit">Pilih Meja</button>
+                <button id="selectTableBtn" type="submit">Pilih Meja</button>
             </form>
         </div>
     @else
@@ -138,9 +138,10 @@
         </a>
 
         <a href="{{ route('order.detail') }}">
-            <button type="button" @if(count($cart) === 0) disabled @endif>Checkout</button>
+            <button id="checkoutBtn"  type="button" @if(count($cart) === 0) disabled @endif>Checkout</button>
         </a>
     </div>
+
 
     <script>
         // JavaScript validation to enable/disable checkout button based on table selection
@@ -164,4 +165,7 @@
     </script>
 
 </body>
+
+
+
 </html>
