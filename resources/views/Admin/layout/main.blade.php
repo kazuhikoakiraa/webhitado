@@ -25,9 +25,9 @@
   <!-- end sidebar partial -->
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
+  <div class="content-wrapper"  >
     <!-- Content Header (Page header) -->
-    <div class="content-header" style="background-color: #ffffff;" >
+    <div class="content-header" style="background-color: #ffffff;margin-left:20px; margin-top:60px;" >
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -39,7 +39,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-<section class="content" style="background-color: #ffffff;">
+<section class="content" style="background-color: #ffffff; margin-left:20px; ">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row justify-content-center">

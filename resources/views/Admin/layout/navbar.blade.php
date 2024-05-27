@@ -9,6 +9,9 @@
           width: 1200px;
           margin-left: 271px;
           position: fixed;
+          top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         /* Ini digunakan untuk menyembunyikan sidebar saat awalnya ditutup */
