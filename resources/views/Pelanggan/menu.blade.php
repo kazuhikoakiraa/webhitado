@@ -49,9 +49,9 @@
                     </div>
                 </form>
             </div>
-            <div class="toggle-box" style="display: flex; justify-content: center; margin:60px 10px 10px 0px ">
-                <button class="toggle-btn active" id="toggle-food" style="padding: 10px 20px; background-color: #8B4233; color:#ffffff; border-radius:10px; border: none; cursor: pointer; margin-right:30px;">Makanan</button>
-                <button class="toggle-btn active" id="toggle-drink" style="padding: 10px 20px; background-color: #8B4233; color:#ffffff; border-radius:10px; border: none; cursor: pointer; margin-right:30px;">Minuman</button>
+            <div class="toggle-box" style="display: flex; justify-content: flex-end; margin:60px 10px 10px 0px ">
+                <button class="toggle-btn active" id="toggle-food" style="padding: 7px 20px; background-color: #8B4233; color:#ffffff; border-radius:10px; border: none; cursor: pointer; margin-right:30px;">Makanan</button>
+                <button class="toggle-btn active" id="toggle-drink" style="padding: 7px 20px; background-color: #8B4233; color:#ffffff; border-radius:10px; border: none; cursor: pointer; margin-right:30px;">Minuman</button>
             </div>
         </div>
     </section>

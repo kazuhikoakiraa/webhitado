@@ -348,18 +348,18 @@
             min-height: 82vh;
             font-family: 'Playfair Display';
             color: var(--font);
-            margin-top: 7rem;
+            margin-top: 3rem;
           "
         >
           <div class="content">
-            <h1 style="color: var(--font); margin-top: 10rem; margin-bottom: 3rem">EXPLORE OUR CAFE</h1>
+            <h1 style="color: var(--font); margin-top: 5rem; margin-bottom: 3rem">EXPLORE OUR CAFE</h1>
             <p
               style="
                 color: #000000;
                 font-size: 15px;
+                margin-left: 4rem;
+                margin-right: 4rem;
                 margin-bottom: 3rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
               "
             >
               {{$item->description}}
@@ -368,7 +368,8 @@
           <input type="file" id="explore-image" style="display: none" />
           <button
             role="button"
-            class="btn btn-sm btn-warning mr-2"
+            class="btn btn-sm"
+            style="background-color: #8B4233; justify-content:center; margin-right:80px; margin-bottom:30px; "
             data-bs-toggle="modal"
             data-bs-target=".formEdit{{ $item->id }}"
           >
@@ -376,7 +377,7 @@
           </button>
           <div class="button-position" style="display: row; text-align: center">
             <div class="row" style="display: flex; justify-content: center">
-              <div class="product-card" style="margin: 1rem; background-color: #f9f9f9; width: 15rem">
+              <div class="product-card" style="margin: 0px 5rem 0px 0px; background-color: #f9f9f9; width: 15rem; border-radius:10px; padding:30px 30px 10px 30px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
                 <img src="{{ asset('img/makanan.jpeg') }}" alt="Product 1" style="width: 100%; height: 12rem" />
                 <h3>FOOD</h3>
                 <div class="product-price" style="margin-bottom: 25px; font-size: 25px">
@@ -384,7 +385,7 @@
                 </div>
               </div>
 
-              <div class="product-card" style="margin: 1rem; background-color: #f9f9f9; width: 15rem">
+              <div class="product-card" style="margin: 0px 5rem 0px 0px; background-color: #f9f9f9; width: 15rem; border-radius:10px; padding:30px 30px 10px 30px; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
                 <img src="{{ asset('img/minuman.jpeg') }}" alt="Product 1" style="width: 100%; height: 12rem" />
                 <h3>DRINK</h3>
                 <div class="product-price" style="margin-bottom: 25px; font-size: 25px">
@@ -394,53 +395,42 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade formEdit{{ $item->id }}" tabindex="-1" role="dialog" aria-hidden="">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  @if (auth()->user()->usertype == 'admin')
-                  <form
-                    method="POST"
-                    action="{{ route('admin.homepage.update', $item->id) }}"
-                    enctype="multipart/form-data"
-                  >
+            <div class="modal fade formEdit{{ $item->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="margin-left: 45%;" role="document">
+                <div class="modal-content" style="background-color: #fefefe; padding: 20px; border: 1px solid #888; width: 80%; margin: auto;">
+                @if (auth()->user()->usertype == 'admin')
+                <form method="POST" action="{{ route('admin.homepage.update', $item->id) }}" enctype="multipart/form-data">
                     @csrf @method('PUT')
                     <div class="modal-header">
-                      <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}</h5>   
-                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <h2 style="font-family: 'Playfair Display'; text-align:left;" class="modal-title" id="modalFormLabel">{{ __('Edit Explore') }}</h2>   
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                     </div>
                     <div class="modal-body">
-                      <div class="row">
+                    <div class="row">
                         <div class="mb-3">
-                          <label class="form-label">{{ __('Description') }}</label>
-                          <textarea
-                            class="form-control @error('description') is-invalid @enderror"
-                            placeholder="description"
-                            name="description"
-                            id="description"
-                            rows="3"
-                          >
-                            {{ old('description', $item->description) }}</textarea
-                          >
-                          @error('description')
-                          <div class="invalid-feedback">{{ $message }}</div>
-                          @enderror
+                        <label class="form-label" style="font-family: 'DM Sans';">{{ __('Description') }}</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" placeholder="description" name="description" id="description" rows="3">{{ old('description', $item->description) }}</textarea>
+                        @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
-                      </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        {{ __('Tutup') }}
-                      </button>
-                      <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
                     </div>
-                  </form>
-                  @endif
+                    <div class="modal-footer" style="margin-top: 10px; display: flex; justify-content: center; align-items: center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #8e181f; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                        {{ __('Batal') }}
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #8e181f; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                        {{ __('Simpan') }}
+                    </button>
+                    </div>
+                </form>
+                @endif
                 </div>
-              </div>
             </div>
-          </div>
+            </div>
         </section>
         @endforeach
 
