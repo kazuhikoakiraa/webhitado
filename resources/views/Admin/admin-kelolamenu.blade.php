@@ -22,7 +22,7 @@
     @include('Admin.layout.sidebar')
     <!-- end sidebar partial -->
 
-    <div class="left" style="padding-left: 20px; margin-left: 220px;">
+    <div class="left" style="padding-left: 20px; margin-left: 220px; margin-top:100px;">
         <div style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
             <div style="max-width: 900px; margin: 20px auto; padding: 20px; background-color: #EFE9D3; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                 <h1 style="text-align: center; font-family: 'Playfair Display'; margin-bottom: 40px;">Kelola Menu</h1>

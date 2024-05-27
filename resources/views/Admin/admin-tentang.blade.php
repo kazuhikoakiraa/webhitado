@@ -50,6 +50,7 @@
             background-position: center;
             align-items: center;
             background-repeat: no-repeat;
+            margin-top:30px;
           "
         >
           <div class="content" style="padding: 1.4rem 7%; width: 100%">

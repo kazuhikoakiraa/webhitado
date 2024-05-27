@@ -27,9 +27,15 @@
   <!-- end sidebar partial -->
 
   <!-- Content Wrapper. Contains page content -->
+<<<<<<< HEAD
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header" style="background-color: #ffffff;">
+=======
+  <div class="content-wrapper"  >
+    <!-- Content Header (Page header) -->
+    <div class="content-header" style="background-color: #ffffff;margin-left:20px; margin-top:60px;" >
+>>>>>>> 95ede5c7a9b3a09e34305c61e9d809375f07969a
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -41,8 +47,13 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+<<<<<<< HEAD
     <section class="content" style="background-color: #ffffff;">
       <div class="container-fluid">
+=======
+<section class="content" style="background-color: #ffffff; margin-left:20px; ">
+    <div class="container-fluid">
+>>>>>>> 95ede5c7a9b3a09e34305c61e9d809375f07969a
         <!-- Small boxes (Stat box) -->
         <div class="row justify-content-center">
           <div class="col-lg-4 col-6">
