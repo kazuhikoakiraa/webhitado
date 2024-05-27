@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="navbar" style="background-color: #efe9d3; display: flex; overflow: hidden; align-items: center; padding: 1rem 5%;">
-        <a href="" style="color: #000000; margin-left: 0; margin-right: 1rem;"><i data-feather="arrow-left"></i></a>
+        <a href="{{route('cart.view')}}" style="color: #000000; margin-left: 0; margin-right: 1rem;"><i data-feather="arrow-left"></i></a>
         <h1 style="margin: 0;">Status Pesanan</h1>
     </nav>
         <div style="font-family: Arial, sans-serif; margin: 0; padding: 0;">

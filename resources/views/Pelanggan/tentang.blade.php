@@ -27,9 +27,9 @@
                 <h1 style="font-size: 3rem; font-family: 'Playfair Display'; color: #8e181f; font-weight:bold; ">WE ARE NOW <br />WE ARE LATER</h1>
                 <p>{{$item->description}}</p>
             </div>
-            <div class="profile-img" style="flex: 1 1 45rem; cursor: pointer;">
+            <div class="profile-img" style="display:flex; flex: 1 1 45rem; cursor: pointer;">
                 <div class="button-position" style="display: row; text-align:center;">
-                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer; width: 400px; height: auto; border-radius: 15px;">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" style="border-radius: 30px; width: 400px; height: 300px; margin-bottom: 30px">
                     <input type="file" id="profile-image" style="display: none;">
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <section class="about" style="display: flex; min-height: 100vh; background-position: center;background-color: #efe9d3; align-items: center; background-repeat: no-repeat;">
             <div class="about-img" style="flex: 1 1 45rem;">
                 <div class="button-position" style="display: row; text-align:center; ">
-                    <img src="{{ asset('assets/img/' . $item->img) }}" style="cursor: pointer; width: 400px; height: auto; border-radius: 15px;">
+                    <img src="{{ asset('assets/img/' . $item->img) }}" style="border-radius: 30px; width: 400px; height: 300px; margin-bottom: 30px">
                     <input type="file" id="about-image" style="display: none;">
                 </div>
             </div>

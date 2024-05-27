@@ -32,7 +32,7 @@
         button {
             background-color: #8e181f;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -80,6 +80,20 @@
         <div class="alert">{{ session('success') }}</div>
     @endif
 
+        <div class="table-select">
+            <form action="{{ route('cart.selectTable') }}" method="POST">
+                @csrf
+                <label for="table_number">Nomor Meja:</label>
+                <select id="table_number" name="table_number" required>
+                    <option value="">Pilih Nomor Meja</option>
+                    @for ($i = 1; $i <= 10; $i++)
+                        <option value="{{ $i }}">Meja {{ $i }}</option>
+                    @endfor
+                </select>
+                <button type="submit">Pilih Meja</button>
+            </form>
+        </div>
+
     @if(count($cart) > 0)
         <table>
             <thead>
@@ -110,24 +124,17 @@
             </tbody>
         </table>
 
-        <div class="table-select">
-            <form action="{{ route('cart.selectTable') }}" method="POST">
-                @csrf
-                <label for="table_number">Nomor Meja:</label>
-                <select id="table_number" name="table_number" required>
-                    <option value="">Pilih Nomor Meja</option>
-                    @for ($i = 1; $i <= 10; $i++)
-                        <option value="{{ $i }}">Meja {{ $i }}</option>
-                    @endfor
-                </select>
-                <button type="submit">Pilih Meja</button>
-            </form>
-        </div>
+
     @else
         <div class="alert">Keranjang belanja Anda kosong!</div>
     @endif
 
     <div class="cart-actions">
+                
+        <a href="{{ url('/pelanggan-status') }}">
+            <button type="button">Lihat Status Pesanan</button>
+        </a>
+
         <form action="{{ route('cart.clear') }}" method="POST">
             @csrf
             <button type="submit">Kosongkan Keranjang</button>
@@ -140,6 +147,7 @@
         <a href="{{ route('order.detail') }}">
             <button type="button" @if(count($cart) === 0) disabled @endif>Checkout</button>
         </a>
+
     </div>
 
     <script>

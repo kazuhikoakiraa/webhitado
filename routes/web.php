@@ -29,7 +29,7 @@ Route::get('/', function(){
     Route::get('/pelanggan-menu', [PelangganMenuController::class, 'index'])->name('pelanggan.menu');
 
     Route::get('/pelanggan-keranjang', function(){
-        return view('Pelanggan.view.keranjang');
+        return view('Pelanggan.cart');
     });
 
     Route::get('/pelanggan-detail', function(){
