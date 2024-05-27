@@ -107,7 +107,7 @@
                           @if ($item->img == null)
                           <img
                             class="img-fluid rounded"
-                            width="200px"
+                            width="80px"
                             id="image-preview"
                             src="{{ asset('assets/img/test.png') }}"
                           />
@@ -265,7 +265,7 @@
                         @else
                         <img
                           class="img-fluid rounded"
-                          width="200px"
+                          width="80px"
                           id="image-preview"
                           src="{{ asset('assets/img/' . $item->img) }}"
                         />
@@ -397,7 +397,7 @@
 
             <!-- Modal -->
             <div class="modal fade formEdit{{ $item->id }}" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" style="margin-left: 45%;" role="document">
+            <div class="modal-dialog modal-dialog-top" style="margin-left: 40%;" role="document">
                 <div class="modal-content" style="background-color: #fefefe; padding: 20px; border: 1px solid #888; width: 80%; margin: auto;">
                 @if (auth()->user()->usertype == 'admin')
                 <form method="POST" action="{{ route('admin.homepage.update', $item->id) }}" enctype="multipart/form-data">
